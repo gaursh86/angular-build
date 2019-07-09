@@ -1,3 +1,3 @@
 # ng_build
-node:10.16.0-alpine
+node:10.16.0-alpine  
 angular/cli
