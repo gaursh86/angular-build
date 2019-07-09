@@ -6,3 +6,4 @@ RUN chown -R node:node /usr/local/lib/node_modules && chown -R node:node /usr/lo
 USER node
 RUN npm install -g @angular/cli
 
+CMD /bin/bash
