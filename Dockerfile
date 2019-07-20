@@ -1,9 +1,18 @@
-FROM node:10.16.0-alpine
+### STAGE 1: Build ###
 
-# install angular-cli as node user
-RUN chown -R node:node /usr/local/lib/node_modules && chown -R node:node /usr/local/bin
+# We label our stage as ‘builder’
+FROM node:10-alpine as builder
 
-USER node
-RUN npm install -g @angular/cli
+COPY package.json package-lock.json ./
 
-CMD /bin/bash
+## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+
+RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+
+WORKDIR /ng-app
+
+COPY . .
+
+## Build the angular app in production mode and store the artifacts in dist folder
+
+RUN npm run ng build -- --prod --output-path=dist
