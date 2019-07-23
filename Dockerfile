@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 RUN wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 RUN mkdir /opt/firefox
 RUN tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
-RUN ln -s /opt/firefox/firefox/firefox /usr/lib/firefox
+RUN chown -R root:users /opt/firefox
+RUN chmod 750 /opt/firefox
+RUN ln -s /opt/firefox/firefox /usr/bin/firefox
 
 RUN npm install -g @angular/cli
 
