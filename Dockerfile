@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 # install firefox
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt install snapd
-RUN snap install -q firefox
+RUN snap install -y -q firefox
 
 # install angular/cli
 RUN npm install -g @angular/cli
