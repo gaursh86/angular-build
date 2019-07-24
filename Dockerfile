@@ -1,5 +1,8 @@
 FROM ubuntu:latest
 
+# Installing wget
+RUN  apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+  
 # Installing Node
 ARG node_version=v10.15.0
 ARG install_name=node-v10.15.0-linux-x64
