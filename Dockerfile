@@ -3,22 +3,16 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-# Installing wget, curl
-RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y curl
-
 # Installing gnupg2
 RUN apt-get update && apt-get install -y gnupg2
 
+# Installing wget
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+# Installing curl
+RUN apt-get update && apt-get install -y curl
+
 # Installing Node
-#ARG node_version=v10.15.0
-#ARG install_name=node-v10.15.0-linux-x64
-#RUN wget "http://nodejs.org/dist/$node_version/$install_name.tar.gz"
-#RUN tar xf $install_name.tar.gz
-
-#ARG NODE_INSTALL_DIR=`pwd`/$install_name/bin
-#ENV PATH $NODE_INSTALL_DIR:$PATH
-
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN sh -c "echo deb https://deb.nodesource.com/node_10.x bionic main > /etc/apt/sources.list.d/nodesource.list"
 RUN apt-get update && apt-get install -y nodejs
