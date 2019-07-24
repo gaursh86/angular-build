@@ -3,8 +3,8 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-# Installing wget
-RUN  apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+# Installing wget, curl
+RUN  apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/* && apt-get install -y curl
 
 # Installing gnupg2
 RUN apt-get update && apt-get install -y gnupg2
