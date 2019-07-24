@@ -6,7 +6,8 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get update && apt-get install -yq google-chrome-stable
 
 # install firefox
-RUN apt-get -y --force-yes install firefox
+RUN apt install snapd
+RUN snap install firefox
 
 # install angular/cli
 RUN npm install -g @angular/cli
