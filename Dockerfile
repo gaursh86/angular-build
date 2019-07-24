@@ -3,10 +3,9 @@ FROM ubuntu:latest
 # installing Node
 ARG node_version=v10.15.0
 ARG install_name=node-v10.15.0-linux-x64
-if [ ! -e $install_name.tar.gz ]; then
 wget "http://nodejs.org/dist/$node_version/$install_name.tar.gz"
 tar xf $install_name.tar.gz
-fi
+
 NODE_INSTALL_DIR=`pwd`/$install_name/bin
 ENV PATH $NODE_INSTALL_DIR:$PATH
 
