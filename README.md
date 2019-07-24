@@ -1,3 +1,5 @@
 # ng_build
-node:10.16.0-alpine  
+node 10.15.0
+Chrome
+Firefox
 angular/cli
