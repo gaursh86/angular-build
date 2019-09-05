@@ -18,7 +18,7 @@ RUN sh -c "echo deb https://deb.nodesource.com/node_10.x bionic main > /etc/apt/
 RUN apt-get update && apt-get install -y nodejs
 
 RUN wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.0.0.1744-linux.zip"
-unzip sonar-scanner-cli-4.0.0.1744-linux.zip
+RUN unzip sonar-scanner-cli-4.0.0.1744-linux.zip
 ENV PATH=`pwd`/sonar-scanner-4.0.0.1744-linux/bin/:$PATH
 
 # Installing chrome
