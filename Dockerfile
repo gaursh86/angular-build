@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 # Installing gnupg2
-RUN apt-get update && apt-get install -y gnupg2
+RUN apt-get update && apt-get install -y gnupg2 unzip
 
 # Installing wget
 RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
@@ -16,6 +16,10 @@ RUN apt-get update && apt-get install -y curl
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN sh -c "echo deb https://deb.nodesource.com/node_10.x bionic main > /etc/apt/sources.list.d/nodesource.list"
 RUN apt-get update && apt-get install -y nodejs
+
+RUN wget "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.0.0.1744-linux.zip"
+unzip sonar-scanner-cli-4.0.0.1744-linux.zip
+ENV PATH=`pwd`/sonar-scanner-4.0.0.1744-linux/bin/:$PATH
 
 # Installing chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
