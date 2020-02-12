@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y firefox && rm -rf /var/lib/apt/lists/*
 # angular/cli
 RUN npm install -g @angular/cli
 RUN npm install
+RUN npm install --save-dev @angular-devkit/build-angular
 
 # IBM® DevOps Insights integration
 RUN npm install -g grunt-idra3
